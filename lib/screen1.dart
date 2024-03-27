@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:login/log.dart';
 import 'package:login/utils/colors.dart';
+import 'package:login/widgets/coustom_button.dart';
+import 'package:login/widgets/custom_textfield.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class TodoItem {
@@ -101,32 +103,50 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Icon(Icons.add),
         onPressed: () {
           showModalBottomSheet(
+            backgroundColor: bgColor,
             context: context,
             builder: (BuildContext context) {
               return Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: Column(
                   children: [
-                    TextField(
+                    SizedBox(
+                      height: 5,
+                    ),
+                    CustomTextField(
+                      Lable: "Name",
                       controller: _nameController,
-                      textInputAction: TextInputAction.next,
-                      decoration: InputDecoration(labelText: "Name"),
-                      // Add validation if needed
                     ),
-                    TextField(
+                    // TextField(
+                    //   controller: _nameController,
+                    //   textInputAction: TextInputAction.next,
+                    //   decoration: InputDecoration(labelText: "Name"),
+                    //   // Add validation if needed
+                    // ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    CustomTextField(
                       controller: _emailController,
-                      textInputAction: TextInputAction.next,
-                      decoration: InputDecoration(labelText: "Email"),
-                      // Add validation if needed
+                      Lable: "Email",
                     ),
-                    TextField(
+                    // TextField(
+                    //   controller: _emailController,
+                    //   textInputAction: TextInputAction.next,
+                    //   decoration: InputDecoration(labelText: "Email"),
+                    //   // Add validation if needed
+                    // ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    CustomTextField(
                       controller: _ageController,
-                      decoration: InputDecoration(labelText: "Age"),
-                      // Add validation if needed
+                      Lable: "Age",
                     ),
-                    SizedBox(height: 10),
-                    ElevatedButton(
-                      onPressed: () {
+                    SizedBox(height: 50),
+                    CoustomButton(
+                      text: "Save",
+                      onTap: () {
                         if (_nameController.text.isNotEmpty &&
                             _emailController.text.isNotEmpty &&
                             _ageController.text.isNotEmpty) {
@@ -149,7 +169,6 @@ class _MyHomePageState extends State<MyHomePage> {
                           Navigator.pop(context);
                         }
                       },
-                      child: Text("Save"),
                     )
                   ],
                 ),

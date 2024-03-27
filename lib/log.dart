@@ -34,7 +34,7 @@ class _logScreenState extends State<logScreen> {
   }
 
   _login() async {
-    if (_usernameController.text == 'Example@gmail.com' &&
+    if (_usernameController.text == 'example@gmail.com' &&
         _passwordController.text == '12345') {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       await prefs.setBool('isLoggedIn', true);
